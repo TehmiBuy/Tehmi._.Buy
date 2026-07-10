@@ -61,6 +61,7 @@
         .badge-sale { background: linear-gradient(135deg, #e74c3c, #c0392b); }
         .badge-hot { background: linear-gradient(135deg, #f39c12, #e67e22); }
         .badge-bestseller { background: linear-gradient(135deg, #c4a87c, #9a7b52); }
+        .badge-summer { background: linear-gradient(135deg, #f97316, #ea580c); }
 
         .gallery-container { position: relative; overflow: hidden; border-radius: 16px; }
         .gallery-track { display: flex; transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
@@ -88,6 +89,15 @@
         .nav-menu-item:hover::after { width: 100%; }
 
         .product-img { transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+
+        .banner-gradient { background: linear-gradient(135deg, #f5efe6 0%, #e8dcc8 50%, #d4c4a8 100%); }
+        .banner-dark { background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); }
+
+        .blog-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 2px 20px rgba(0,0,0,0.05); transition: all 0.4s ease; }
+        .blog-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
+
+        .seasonal-badge { position: absolute; top: 12px; right: 12px; z-index: 10; background: linear-gradient(135deg, #f97316, #ea580c); color: white; padding: 6px 14px; border-radius: 50px; font-size: 11px; font-weight: 700; display: flex; align-items: center; gap: 4px; }
+        .seasonal-badge svg { width: 14px; height: 14px; }
     </style>
     <script>
         tailwind.config = {
@@ -112,7 +122,7 @@
     <!-- Navigation -->
     <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-500 bg-transparent">
         <div class="max-w-7xl mx-auto px-4 lg:px-8">
-            <div class="flex items-center justify-between h-18">
+            <div class="flex items-center justify-between h-16">
                 <a href="#" class="flex items-center gap-2">
                     <img src="https://cdn.shopify.com/s/files/1/0796/1994/8567/files/c2ee87cb-c465-4e27-ba14-36c14a6405c5_1.png?v=1779919756" alt="Tehmi Buy" class="h-10 w-auto object-contain">
                 </a>
@@ -125,24 +135,17 @@
                             <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                         </button>
                         <div class="absolute top-full left-0 mt-2 w-56 bg-white rounded-2xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 py-3 px-2 z-50">
-                            <a href="#catalog" class="flex items-center gap-3 px-4 py-2.5 rounded-xl hover:bg-gold-50 transition-colors" onclick="filterCategory('bedding')">
-                                <span class="text-lg">🛏️</span>
-                                <span class="text-sm font-medium text-gray-700">Անկողնային Սպիտակեղեն</span>
-                            </a>
-                            <a href="#catalog" class="flex items-center gap-3 px-4 py-2.5 rounded-xl hover:bg-gold-50 transition-colors" onclick="filterCategory('nightwear')">
-                                <span class="text-lg">👗</span>
-                                <span class="text-sm font-medium text-gray-700">Գիշերազգեստ</span>
-                            </a>
-                            <a href="#catalog" class="flex items-center gap-3 px-4 py-2.5 rounded-xl hover:bg-gold-50 transition-colors" onclick="filterCategory('pillows')">
-                                <span class="text-lg">🛋️</span>
-                                <span class="text-sm font-medium text-gray-700">Բարձի Երեսներ</span>
-                            </a>
-                            <a href="#catalog" class="flex items-center gap-3 px-4 py-2.5 rounded-xl hover:bg-gold-50 transition-colors" onclick="filterCategory('sofa')">
-                                <span class="text-lg">🪑</span>
-                                <span class="text-sm font-medium text-gray-700">Բազմոցի Ծածկոցներ</span>
-                            </a>
+                            <a href="#catalog" class="flex items-center gap-3 px-4 py-2.5 rounded-xl hover:bg-gold-50 transition-colors" onclick="filterCategory('bedding')"><span class="text-lg">🛏️</span><span class="text-sm font-medium text-gray-700">Անկողնային Սպիտակեղեն</span></a>
+                            <a href="#catalog" class="flex items-center gap-3 px-4 py-2.5 rounded-xl hover:bg-gold-50 transition-colors" onclick="filterCategory('nightwear')"><span class="text-lg">👗</span><span class="text-sm font-medium text-gray-700">Գիշերազգեստ</span></a>
+                            <a href="#catalog" class="flex items-center gap-3 px-4 py-2.5 rounded-xl hover:bg-gold-50 transition-colors" onclick="filterCategory('pillows')"><span class="text-lg">🛋️</span><span class="text-sm font-medium text-gray-700">Բարձի Երեսներ</span></a>
+                            <a href="#catalog" class="flex items-center gap-3 px-4 py-2.5 rounded-xl hover:bg-gold-50 transition-colors" onclick="filterCategory('sofa')"><span class="text-lg">🪑</span><span class="text-sm font-medium text-gray-700">Բազմոցի Ծածկոցներ</span></a>
+                            <a href="#catalog" class="flex items-center gap-3 px-4 py-2.5 rounded-xl hover:bg-gold-50 transition-colors" onclick="filterCategory('towels')"><span class="text-lg">🧖</span><span class="text-sm font-medium text-gray-700">Սրբիչներ</span></a>
+                            <a href="#catalog" class="flex items-center gap-3 px-4 py-2.5 rounded-xl hover:bg-gold-50 transition-colors" onclick="filterCategory('mattress')"><span class="text-lg">🛌</span><span class="text-sm font-medium text-gray-700">Ներքնակի Երեսներ</span></a>
+                            <a href="#catalog" class="flex items-center gap-3 px-4 py-2.5 rounded-xl hover:bg-gold-50 transition-colors" onclick="filterCategory('summer')"><span class="text-lg">☀️</span><span class="text-sm font-medium text-gray-700">Ամառային Ծածկոցներ</span></a>
                         </div>
                     </div>
+                    <a href="#towels" class="nav-menu-item text-sm font-medium text-gray-700 hover:text-gold-400 transition-colors">Սրբիչներ</a>
+                    <a href="#blog" class="nav-menu-item text-sm font-medium text-gray-700 hover:text-gold-400 transition-colors">Բլոգ</a>
                     <a href="#features" class="nav-menu-item text-sm font-medium text-gray-700 hover:text-gold-400 transition-colors">Առավելություններ</a>
                     <a href="#contact" class="nav-menu-item text-sm font-medium text-gray-700 hover:text-gold-400 transition-colors">Կապ</a>
                 </div>
@@ -161,13 +164,12 @@
 
     <!-- Mobile Menu -->
     <div id="mobileMenu" class="fixed inset-0 z-40 bg-white transform translate-x-full transition-transform duration-500 lg:hidden">
-        <div class="flex flex-col items-center justify-center h-full gap-6">
-            <button onclick="toggleMobileMenu()" class="absolute top-6 right-6 p-2">
-                <svg class="w-7 h-7 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-            </button>
+        <div class="flex flex-col items-center justify-center h-full gap-5">
+            <button onclick="toggleMobileMenu()" class="absolute top-6 right-6 p-2"><svg class="w-7 h-7 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
             <a href="#home" onclick="toggleMobileMenu()" class="text-xl font-semibold text-gray-800">Գլխավոր</a>
             <a href="#catalog" onclick="toggleMobileMenu()" class="text-xl font-semibold text-gray-800">Կատալոգ</a>
-            <a href="#catalog" onclick="filterCategory('nightwear'); toggleMobileMenu()" class="text-xl font-semibold text-gray-800">Գիշերազգեստ</a>
+            <a href="#towels" onclick="toggleMobileMenu()" class="text-xl font-semibold text-gray-800">🧖 Սրբիչներ</a>
+            <a href="#blog" onclick="toggleMobileMenu()" class="text-xl font-semibold text-gray-800">📝 Բլոգ</a>
             <a href="#features" onclick="toggleMobileMenu()" class="text-xl font-semibold text-gray-800">Առավելություններ</a>
             <a href="#contact" onclick="toggleMobileMenu()" class="text-xl font-semibold text-gray-800">Կապ</a>
         </div>
@@ -188,11 +190,11 @@
                         Հոյակապ Աշխարհ
                     </h1>
                     <p class="text-base text-gray-600 mb-8 max-w-lg leading-relaxed">
-                        Բարձրորակ սպիտակեղեն, որն ապահովում է հարմարավետ քուն և գեղեցկություն ձեր ննջասենյակին։ Յուրաքանչյուր հավաքածու պատրաստված է բնական գործվածքներից։
+                        Բարձրորակ սպիտակեղեն, սրբիչներ, գիշերազգեստներ և շատ ավելին։ Յուրաքանչյուր արտադրանք պատրաստված է բնական գործվածքներից։
                     </p>
                     <div class="flex flex-wrap gap-3">
                         <a href="#catalog" class="btn-primary">Դիտել Կատալոգը</a>
-                        <a href="#contact" class="btn-secondary">Կապվել Մեզ Հետ</a>
+                        <a href="#towels" class="btn-secondary">🧖 Սրբիչներ</a>
                     </div>
                 </div>
                 <div class="fade-in-right relative">
@@ -204,10 +206,7 @@
                                 <div class="w-9 h-9 bg-gold-100 rounded-full flex items-center justify-center">
                                     <svg class="w-4 h-4 text-gold-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                                 </div>
-                                <div>
-                                    <p class="text-xs font-semibold text-gray-900">Premium Որակ</p>
-                                    <p class="text-[10px] text-gray-400">Բնական գործվածքներ</p>
-                                </div>
+                                <div><p class="text-xs font-semibold text-gray-900">Premium Որակ</p><p class="text-[10px] text-gray-400">Բնական գործվածքներ</p></div>
                             </div>
                         </div>
                     </div>
@@ -223,12 +222,16 @@
             <span class="text-white text-xs font-semibold mx-6">✦ ԲՆԱԿԱՆ ԳՈՐԾՎԱԾՔՆԵՐ</span>
             <span class="text-white text-xs font-semibold mx-6">✦ 100% ԵՐԱՇԽԻՔ</span>
             <span class="text-white text-xs font-semibold mx-6">✦ ՆՈՐ ՀԱՎԱԾԱԾՈՒ 2026</span>
+            <span class="text-white text-xs font-semibold mx-6">✦ ՍՐԲԻՉՆԵՐ</span>
+            <span class="text-white text-xs font-semibold mx-6">✦ ԳԻՇԵՐԱԶԳԵՍՏՆԵՐ</span>
             <span class="text-white text-xs font-semibold mx-6">✦ ՊՐԵՄԻՈՒՄ ՈՐԱԿ</span>
             <span class="text-white text-xs font-semibold mx-6">✦ ՀԱՃԱԽՈՐԴԱՍԻՐԱԿԱՆ ԳՆԵՐ</span>
             <span class="text-white text-xs font-semibold mx-6">✦ ԱՆՎՃԱՐ ԱՌԱՔՈՒՄ</span>
             <span class="text-white text-xs font-semibold mx-6">✦ ԲՆԱԿԱՆ ԳՈՐԾՎԱԾՔՆԵՐ</span>
             <span class="text-white text-xs font-semibold mx-6">✦ 100% ԵՐԱՇԽԻՔ</span>
             <span class="text-white text-xs font-semibold mx-6">✦ ՆՈՐ ՀԱՎԱԾԱԾՈՒ 2026</span>
+            <span class="text-white text-xs font-semibold mx-6">✦ ՍՐԲԻՉՆԵՐ</span>
+            <span class="text-white text-xs font-semibold mx-6">✦ ԳԻՇԵՐԱԶԳԵՍՏՆԵՐ</span>
             <span class="text-white text-xs font-semibold mx-6">✦ ՊՐԵՄԻՈՒՄ ՈՐԱԿ</span>
             <span class="text-white text-xs font-semibold mx-6">✦ ՀԱՃԱԽՈՐԴԱՍԻՐԱԿԱՆ ԳՆԵՐ</span>
         </div>
@@ -243,33 +246,43 @@
             </div>
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div class="fade-in text-center group" style="transition-delay:0.1s">
-                    <div class="feature-icon mx-auto mb-4 group-hover:scale-110 transition-transform">
-                        <svg class="w-6 h-6 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
-                    </div>
+                    <div class="feature-icon mx-auto mb-4 group-hover:scale-110 transition-transform"><svg class="w-6 h-6 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg></div>
                     <h3 class="text-base font-semibold text-gray-900 mb-1">Պրեմիում Որակ</h3>
                     <p class="text-xs text-gray-500 leading-relaxed">Բարձրորակ բնական գործվածքներ, որոնք երկար են ծառայում</p>
                 </div>
                 <div class="fade-in text-center group" style="transition-delay:0.2s">
-                    <div class="feature-icon mx-auto mb-4 group-hover:scale-110 transition-transform">
-                        <svg class="w-6 h-6 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                    </div>
+                    <div class="feature-icon mx-auto mb-4 group-hover:scale-110 transition-transform"><svg class="w-6 h-6 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
                     <h3 class="text-base font-semibold text-gray-900 mb-1">Արագ Առաքում</h3>
                     <p class="text-xs text-gray-500 leading-relaxed">Արագ առաքում ամբողջ ՀՀ տարածքում</p>
                 </div>
                 <div class="fade-in text-center group" style="transition-delay:0.3s">
-                    <div class="feature-icon mx-auto mb-4 group-hover:scale-110 transition-transform">
-                        <svg class="w-6 h-6 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
-                    </div>
+                    <div class="feature-icon mx-auto mb-4 group-hover:scale-110 transition-transform"><svg class="w-6 h-6 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg></div>
                     <h3 class="text-base font-semibold text-gray-900 mb-1">100% Երաշխիք</h3>
                     <p class="text-xs text-gray-500 leading-relaxed">Արտադրանքի որակի ամբողջական երաշխիք</p>
                 </div>
                 <div class="fade-in text-center group" style="transition-delay:0.4s">
-                    <div class="feature-icon mx-auto mb-4 group-hover:scale-110 transition-transform">
-                        <svg class="w-6 h-6 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                    </div>
+                    <div class="feature-icon mx-auto mb-4 group-hover:scale-110 transition-transform"><svg class="w-6 h-6 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
                     <h3 class="text-base font-semibold text-gray-900 mb-1">Մատչելի Գներ</h3>
                     <p class="text-xs text-gray-500 leading-relaxed">Մրցունակ գներ և հատուկ զեղչեր մշտական հաճախորդների համար</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner 1: Promo -->
+    <section class="py-16 banner-gradient relative overflow-hidden">
+        <div class="absolute inset-0 opacity-20">
+            <div class="absolute top-5 left-10 w-32 h-32 bg-white rounded-full blur-3xl"></div>
+            <div class="absolute bottom-5 right-10 w-48 h-48 bg-white rounded-full blur-3xl"></div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 lg:px-8 relative z-10">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-8 fade-in">
+                <div class="text-center lg:text-left">
+                    <span class="inline-block bg-white/80 text-gold-600 text-xs font-bold px-4 py-1.5 rounded-full mb-4">🔥 ՀԱՏՈՒԿ ԱՌԱՋԱՐԿ</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Նոր Սրբիչների Հավաքածու</h2>
+                    <p class="text-gray-600 max-w-md">Բարձրորակ, փափուկ սրբիչներ՝ ձեր լոգասենյակի համար։ Անհատական չափսերով կարում։</p>
+                </div>
+                <a href="#towels" class="btn-primary whitespace-nowrap">Դիտել Սրբիչները →</a>
             </div>
         </div>
     </section>
@@ -288,8 +301,170 @@
                 <button class="category-pill px-5 py-2 rounded-full text-xs font-medium bg-white text-gray-600 shadow-sm" data-category="nightwear">Գիշերազգեստ</button>
                 <button class="category-pill px-5 py-2 rounded-full text-xs font-medium bg-white text-gray-600 shadow-sm" data-category="pillows">Բարձի Երեսներ</button>
                 <button class="category-pill px-5 py-2 rounded-full text-xs font-medium bg-white text-gray-600 shadow-sm" data-category="sofa">Բազմոցի Ծածկոցներ</button>
+                <button class="category-pill px-5 py-2 rounded-full text-xs font-medium bg-white text-gray-600 shadow-sm" data-category="towels">Սրբիչներ</button>
+                <button class="category-pill px-5 py-2 rounded-full text-xs font-medium bg-white text-gray-600 shadow-sm" data-category="mattress">Ներքնակի Երեսներ</button>
+                <button class="category-pill px-5 py-2 rounded-full text-xs font-medium bg-white text-gray-600 shadow-sm" data-category="summer">☀️ Ամառային</button>
             </div>
-            <div id="productGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div id="productGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+        </div>
+    </section>
+
+    <!-- Towels Section -->
+    <section id="towels" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 lg:px-8">
+            <div class="text-center mb-12 fade-in">
+                <span class="text-gold-400 font-semibold text-xs uppercase tracking-widest">🧖 Նոր Բաժին</span>
+                <h2 class="text-3xl font-bold text-gray-900 mt-3 mb-3">Սրբիչների Հավաքածու</h2>
+                <p class="text-gray-500 max-w-xl mx-auto text-sm">Բարձրորակ, փափուկ և դիմացկուն սրբիչներ՝ ձեր լոգասենյակի և խոհանոցի համար։ Բնական բամբակից, անհատական չափսերով։</p>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-6 mb-10 fade-in">
+                <div class="gallery-container rounded-2xl overflow-hidden shadow-lg" style="aspect-ratio:4/3" id="towel-gallery-main">
+                    <div class="gallery-track h-full" id="towel-track-main">
+                        <img src="https://cdn.shopify.com/s/files/1/0796/1994/8567/files/2K_202607081653.jpg?v=1783629020" alt="Սրբիչներ" class="h-full w-full object-cover flex-shrink-0 cursor-zoom-in" onclick="openZoom(this.src)" style="aspect-ratio:4/3">
+                        <img src="https://cdn.shopify.com/s/files/1/0796/1994/8567/files/2K_202605182340.jpg?v=1783629019" alt="Սրբիչներ" class="h-full w-full object-cover flex-shrink-0 cursor-zoom-in" onclick="openZoom(this.src)" style="aspect-ratio:4/3">
+                        <img src="https://cdn.shopify.com/s/files/1/0796/1994/8567/files/2K_202607081652_36afba56-072b-45bd-b0c1-71fc80e949aa.jpg?v=1783629019" alt="Սրբիչներ" class="h-full w-full object-cover flex-shrink-0 cursor-zoom-in" onclick="openZoom(this.src)" style="aspect-ratio:4/3">
+                        <img src="https://cdn.shopify.com/s/files/1/0796/1994/8567/files/2K_202607081652.jpg?v=1783629019" alt="Սրբիչներ" class="h-full w-full object-cover flex-shrink-0 cursor-zoom-in" onclick="openZoom(this.src)" style="aspect-ratio:4/3">
+                        <img src="https://cdn.shopify.com/s/files/1/0796/1994/8567/files/202605182339_80c9fb17-8864-4fce-9ed1-167c8f6947e1.jpg?v=1783629019" alt="Սրբիչներ" class="h-full w-full object-cover flex-shrink-0 cursor-zoom-in" onclick="openZoom(this.src)" style="aspect-ratio:4/3">
+                        <img src="https://cdn.shopify.com/s/files/1/0796/1994/8567/files/2K_202605182340_2652f72b-18e4-4655-9f52-d32ac92c138e.jpg?v=1783629055" alt="Սրբիչներ" class="h-full w-full object-cover flex-shrink-0 cursor-zoom-in" onclick="openZoom(this.src)" style="aspect-ratio:4/3">
+                    </div>
+                    <button onclick="slideTowelGallery(-1)" class="absolute left-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 rounded-full flex items-center justify-center hover:bg-white transition-colors shadow-sm z-10"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg></button>
+                    <button onclick="slideTowelGallery(1)" class="absolute right-3 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/80 rounded-full flex items-center justify-center hover:bg-white transition-colors shadow-sm z-10"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></button>
+                    <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2 z-10" id="towelDots"></div>
+                </div>
+                <div class="flex flex-col gap-6 justify-center">
+                    <div class="fade-in-right">
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Պրեմիում Սրբիչներ</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">Մեր սրբիչները պատրաստված են 100% բնական բամբակից՝ առավելագույն փափկության և ներծծողականության համար։ Դիմացկուն, հիպոալերգենիկ և էկոլոգիական մաքուր։</p>
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-center gap-2"><span class="w-5 h-5 bg-gold-100 rounded-full flex items-center justify-center text-gold-500 text-xs">✓</span><span class="text-sm text-gray-600">100% բնական բամբակ</span></li>
+                            <li class="flex items-center gap-2"><span class="w-5 h-5 bg-gold-100 rounded-full flex items-center justify-center text-gold-500 text-xs">✓</span><span class="text-sm text-gray-600">Անհատական չափսերով կարում</span></li>
+                            <li class="flex items-center gap-2"><span class="w-5 h-5 bg-gold-100 rounded-full flex items-center justify-center text-gold-500 text-xs">✓</span><span class="text-sm text-gray-600">Բարձր ներծծողականություն</span></li>
+                            <li class="flex items-center gap-2"><span class="w-5 h-5 bg-gold-100 rounded-full flex items-center justify-center text-gold-500 text-xs">✓</span><span class="text-sm text-gray-600">Դիմացկուն և երկարակյաց</span></li>
+                            <li class="flex items-center gap-2"><span class="w-5 h-5 bg-gold-100 rounded-full flex items-center justify-center text-gold-500 text-xs">✓</span><span class="text-sm text-gray-600">Հիպոալերգենիկ</span></li>
+                        </ul>
+                        <div class="flex gap-3">
+                            <button onclick="addToCart(18)" class="btn-primary text-sm">🛒 Ավելացնել Զամբյուղ</button>
+                            <a href="https://www.instagram.com/tehmi._.buy/" target="_blank" class="btn-primary text-sm">📩 Պատվիրել</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 fade-in">
+                <div class="scale-in overflow-hidden rounded-2xl group cursor-pointer" onclick="openZoom('https://cdn.shopify.com/s/files/1/0796/1994/8567/files/2K_202607081653.jpg?v=1783629020')"><img src="https://cdn.shopify.com/s/files/1/0796/1994/8567/files/2K_202607081653.jpg?v=1783629020" alt="Սրբիչ" class="w-full h-48 md:h-64 object-cover group-hover:scale-105 transition-transform duration-700 rounded-2xl"></div>
+                <div class="scale-in overflow-hidden rounded-2xl group cursor-pointer" onclick="openZoom('https://cdn.shopify.com/s/files/1/0796/1994/8567/files/2K_202605182340.jpg?v=1783629019')" style="transition-delay:0.1s"><img src="https://cdn.shopify.com/s/files/1/0796/1994/8567/files/2K_202605182340.jpg?v=1783629019" alt="Սրբիչ" class="w-full h-48 md:h-64 object-cover group-hover:scale-105 transition-transform duration-700 rounded-2xl"></div>
+                <div class="scale-in overflow-hidden rounded-2xl group cursor-pointer" onclick="openZoom('https://cdn.shopify.com/s/files/1/0796/1994/8567/files/2K_202607081652_36afba56-072b-45bd-b0c1-71fc80e949aa.jpg?v=1783629019')" style="transition-delay:0.2s"><img src="https://cdn.shopify.com/s/files/1/0796/1994/8567/files/2K_202607081652_36afba56-072b-45bd-b0c1-71fc80e949aa.jpg?v=1783629019" alt="Սրբիչ" class="w-full h-48 md:h-64 object-cover group-hover:scale-105 transition-transform duration-700 rounded-2xl"></div>
+                <div class="scale-in overflow-hidden rounded-2xl group cursor-pointer" onclick="openZoom('https://cdn.shopify.com/s/files/1/0796/1994/8567/files/2K_202607081652.jpg?v=1783629019')" style="transition-delay:0.3s"><img src="https://cdn.shopify.com/s/files/1/0796/1994/8567/files/2K_202607081652.jpg?v=1783629019" alt="Սրբիչ" class="w-full h-48 md:h-64 object-cover group-hover:scale-105 transition-transform duration-700 rounded-2xl"></div>
+                <div class="scale-in overflow-hidden rounded-2xl group cursor-pointer" onclick="openZoom('https://cdn.shopify.com/s/files/1/0796/1994/8567/files/202605182339_80c9fb17-8864-4fce-9ed1-167c8f6947e1.jpg?v=1783629019')" style="transition-delay:0.4s"><img src="https://cdn.shopify.com/s/files/1/0796/1994/8567/files/202605182339_80c9fb17-8864-4fce-9ed1-167c8f6947e1.jpg?v=1783629019" alt="Սրբիչ" class="w-full h-48 md:h-64 object-cover group-hover:scale-105 transition-transform duration-700 rounded-2xl"></div>
+                <div class="scale-in overflow-hidden rounded-2xl group cursor-pointer" onclick="openZoom('https://cdn.shopify.com/s/files/1/0796/1994/8567/files/2K_202605182340_2652f72b-18e4-4655-9f52-d32ac92c138e.jpg?v=1783629055')" style="transition-delay:0.5s"><img src="https://cdn.shopify.com/s/files/1/0796/1994/8567/files/2K_202605182340_2652f72b-18e4-4655-9f52-d32ac92c138e.jpg?v=1783629055" alt="Սրբիչ" class="w-full h-48 md:h-64 object-cover group-hover:scale-105 transition-transform duration-700 rounded-2xl"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner 2: Instagram CTA -->
+    <section class="py-16 banner-dark relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-10 right-20 w-40 h-40 bg-gold-400 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-10 left-20 w-60 h-60 bg-gold-400 rounded-full blur-3xl"></div>
+        </div>
+        <div class="max-w-4xl mx-auto px-4 lg:px-8 text-center relative z-10 fade-in">
+            <div class="text-5xl mb-4">📸</div>
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Հետևեք Մեզ Instagram-ում</h2>
+            <p class="text-gray-300 mb-8 max-w-lg mx-auto text-sm">Տեսեք մեր նոր հավաքածուները, ակցիաները և հաճախորդների ակնարկները Instagram-ում։</p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="https://www.instagram.com/tehmi._.buy/" target="_blank" class="btn-instagram text-base px-8 py-3.5 inline-flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    Instagram
+                </a>
+                <a href="https://www.facebook.com/profile.php?id=61589899370178" target="_blank" class="btn-secondary text-base px-8 py-3.5 inline-flex items-center gap-2 border-white text-white hover:bg-white hover:text-gray-900">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    Facebook
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="py-20 bg-cream-100">
+        <div class="max-w-7xl mx-auto px-4 lg:px-8">
+            <div class="text-center mb-14 fade-in">
+                <span class="text-gold-400 font-semibold text-xs uppercase tracking-widest">📝 Բլոգ</span>
+                <h2 class="text-3xl font-bold text-gray-900 mt-3 mb-3">Օգտակար Հոդվածներ</h2>
+                <p class="text-gray-500 max-w-lg mx-auto text-sm">Կարդացեք օգտակար խորհուրդներ, թրենդներ և նորություններ անկողնային սպիտակեղենի աշխարհից։</p>
+            </div>
+            <div class="blog-card mb-10 fade-in-left">
+                <div class="grid lg:grid-cols-2">
+                    <div class="relative overflow-hidden">
+                        <img src="https://cdn.shopify.com/s/files/1/0796/1994/8567/files/202605261911.jpg?v=1779919689" alt="Ամսվա Bestseller" class="w-full h-80 lg:h-full object-cover hover:scale-105 transition-transform duration-700">
+                        <div class="absolute top-4 left-4"><span class="bg-gold-400 text-white text-xs font-bold px-4 py-1.5 rounded-full">🏆 Ամսվա Bestseller</span></div>
+                    </div>
+                    <div class="p-8 lg:p-12 flex flex-col justify-center">
+                        <div class="flex items-center gap-3 mb-4"><span class="text-xs text-gray-400 bg-gray-100 px-3 py-1 rounded-full">📅 Հուլիս 2026</span><span class="text-xs text-gold-400 font-semibold">3 րոպե ընթերցում</span></div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">Ամսվա Bestseller — Ինչու՞ է այս հավաքածուն դարձել ամենավաճառվողը</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">Ամեն ամիս մեր հաճախորդներն ընտրում են մեկ հատուկ հավաքածու, որը դառնում է ամենասիրվածը։ Այս ամիս այդ պատիվը ստացավ մեր դասական սատինե հավաքածուն։</p>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-6">Պատճառները պարզ են՝ բնական գործվածք, դիմացկուն գույներ, կատարյալ կարեր և մատչելի գին։ Ահա թե ինչու մեր հաճախորդները վերադառնում են նորից և նորից։</p>
+                        <div class="flex items-center gap-3"><div class="w-10 h-10 bg-gold-200 rounded-full flex items-center justify-center text-gold-600 font-bold text-sm">T</div><div><p class="font-semibold text-gray-900 text-sm">Tehmi Buy Team</p><p class="text-xs text-gray-400">Հուլիս 2026</p></div></div>
+                    </div>
+                </div>
+            </div>
+            <div class="blog-card mb-10 fade-in-right">
+                <div class="grid lg:grid-cols-2">
+                    <div class="p-8 lg:p-12 flex flex-col justify-center order-2 lg:order-1">
+                        <div class="flex items-center gap-3 mb-4"><span class="text-xs text-gray-400 bg-gray-100 px-3 py-1 rounded-full">📅 Հուլիս 2026</span><span class="text-xs text-gold-400 font-semibold">5 րոպե ընթերցում</span></div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">🧖 Ինչպես ընտրել ճիշտ սրբիչը</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">Սրբիչի ընտրությունը կարևոր է ձեր լոգասենյակի հարմարավետության համար։ Բամբակե սրբիչները ամենատարածվածն են՝ իրենց փափկության և ներծծողականության շնորհիվ։</p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-start gap-2 text-sm text-gray-600"><span class="text-gold-400 mt-0.5">•</span> Ընտրեք 100% բամբակ՝ առավելագույն փափկության համար</li>
+                            <li class="flex items-start gap-2 text-sm text-gray-600"><span class="text-gold-400 mt-0.5">•</span> Չափսը կարևոր է՝ մարմնի սրբիչը պետք է լինի առնվազն 70×140 սմ</li>
+                            <li class="flex items-start gap-2 text-sm text-gray-600"><span class="text-gold-400 mt-0.5">•</span> Խտությունը՝ 400-600 GSM իդեալական է ամենօրյա օգտագործման համար</li>
+                            <li class="flex items-start gap-2 text-sm text-gray-600"><span class="text-gold-400 mt-0.5">•</span> Լվացեք առանձին՝ գույները պահպանելու համար</li>
+                        </ul>
+                        <div class="flex items-center gap-3"><div class="w-10 h-10 bg-gold-200 rounded-full flex items-center justify-center text-gold-600 font-bold text-sm">T</div><div><p class="font-semibold text-gray-900 text-sm">Tehmi Buy Team</p><p class="text-xs text-gray-400">Հուլիս 2026</p></div></div>
+                    </div>
+                    <div class="relative overflow-hidden order-1 lg:order-2"><img src="https://cdn.shopify.com/s/files/1/0796/1994/8567/files/2K_202607081653.jpg?v=1783629020" alt="Սրբիչների ուղեցույց" class="w-full h-80 lg:h-full object-cover hover:scale-105 transition-transform duration-700"><div class="absolute top-4 left-4"><span class="bg-green-500 text-white text-xs font-bold px-4 py-1.5 rounded-full">📝 Օգտակար</span></div></div>
+                </div>
+            </div>
+            <div class="blog-card fade-in">
+                <div class="grid lg:grid-cols-2">
+                    <div class="relative overflow-hidden"><img src="https://cdn.shopify.com/s/files/1/0796/1994/8567/files/2K_202605112110.jpg?v=1779919722" alt="Խնամքի ուղեցույց" class="w-full h-80 lg:h-full object-cover hover:scale-105 transition-transform duration-700"><div class="absolute top-4 left-4"><span class="bg-purple-500 text-white text-xs font-bold px-4 py-1.5 rounded-full">💡 Խորհուրդներ</span></div></div>
+                    <div class="p-8 lg:p-12 flex flex-col justify-center">
+                        <div class="flex items-center gap-3 mb-4"><span class="text-xs text-gray-400 bg-gray-100 px-3 py-1 rounded-full">📅 Հուլիս 2026</span><span class="text-xs text-gold-400 font-semibold">4 րոպե ընթերցում</span></div>
+                        <h3 class="text-2xl font-bold text-gray-900 mb-4">🧺 Ինչպես խնամել ձեր անկողնային սպիտակեղենը</h3>
+                        <p class="text-gray-600 text-sm leading-relaxed mb-4">Ճիշտ խնամքը երկարաձգում է ձեր սպիտակեղենի կյանքը։ Ահա մեր լավագույն խորհուրդները.</p>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-start gap-2 text-sm text-gray-600"><span class="text-gold-400 mt-0.5">•</span> Լվացեք 30-40°C ջերմաստիճանով</li>
+                            <li class="flex items-start gap-2 text-sm text-gray-600"><span class="text-gold-400 mt-0.5">•</span> Օգտագործեք նուրբ լվացքի միջոցներ</li>
+                            <li class="flex items-start gap-2 text-sm text-gray-600"><span class="text-gold-400 mt-0.5">•</span> Չորացրեք ստվերում՝ գույները պահպանելու համար</li>
+                            <li class="flex items-start gap-2 text-sm text-gray-600"><span class="text-gold-400 mt-0.5">•</span> Մի՛ օգտագործեք սպիտակեցնող նյութեր</li>
+                            <li class="flex items-start gap-2 text-sm text-gray-600"><span class="text-gold-400 mt-0.5">•</span> Դարդկեք արդուկով միջին ջերմաստիճանով</li>
+                        </ul>
+                        <div class="flex items-center gap-3"><div class="w-10 h-10 bg-gold-200 rounded-full flex items-center justify-center text-gold-600 font-bold text-sm">T</div><div><p class="font-semibold text-gray-900 text-sm">Tehmi Buy Team</p><p class="text-xs text-gray-400">Հուլիս 2026</p></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner 3: Custom Order -->
+    <section class="py-16 banner-gradient relative overflow-hidden">
+        <div class="absolute inset-0 opacity-15">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-gold-300 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 w-48 h-48 bg-gold-200 rounded-full blur-3xl"></div>
+        </div>
+        <div class="max-w-5xl mx-auto px-4 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-10 items-center fade-in">
+                <div>
+                    <span class="inline-block bg-white/80 text-gold-600 text-xs font-bold px-4 py-1.5 rounded-full mb-4">✨ ԱՆՀԱՏԱԿԱՆ ՊԱՏՎԵՐ</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Ձեր Նախընտրած Գույնով և Չափսով</h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed">Մենք պատրաստում ենք անկողնային սպիտակեղեն ձեր ընտրած գույնով և չափսով։ Յուրաքանչյուր պատվեր կարվում է անհատապես՝ ձեր ցանկություններին համապատասխան։</p>
+                    <div class="grid grid-cols-2 gap-4 mb-6">
+                        <div class="bg-white/60 rounded-xl p-4 text-center"><p class="text-2xl mb-1">🎨</p><p class="text-sm font-semibold text-gray-900">Ցանկացած Գույն</p></div>
+                        <div class="bg-white/60 rounded-xl p-4 text-center"><p class="text-2xl mb-1">📏</p><p class="text-sm font-semibold text-gray-900">Ցանկացած Չափս</p></div>
+                        <div class="bg-white/60 rounded-xl p-4 text-center"><p class="text-2xl mb-1">🧵</p><p class="text-sm font-semibold text-gray-900">Ձեռքի Կար</p></div>
+                        <div class="bg-white/60 rounded-xl p-4 text-center"><p class="text-2xl mb-1">📦</p><p class="text-sm font-semibold text-gray-900">Արագ Առաքում</p></div>
+                    </div>
+                    <a href="https://www.instagram.com/tehmi._.buy/" target="_blank" class="btn-primary inline-flex items-center gap-2">📩 Պատվիրել Instagram-ով</a>
+                </div>
+                <div class="relative"><img src="https://cdn.shopify.com/s/files/1/0796/1994/8567/files/22.png?v=1779919639" alt="Custom Order" class="rounded-2xl shadow-xl w-full object-cover" style="aspect-ratio: 4/3;"></div>
             </div>
         </div>
     </section>
@@ -311,10 +486,7 @@
                         <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                     </div>
                     <p class="text-gray-600 text-sm mb-5 leading-relaxed">"Շատ գեղեցիկ և որակյալ սպիտակեղեն է։ Արդեն երկրորդ անգամն է պատվիրում եմ և շատ գոհ եմ։ Խորհուրդ եմ տալիս բոլորին։"</p>
-                    <div class="flex items-center gap-3">
-                        <div class="w-9 h-9 bg-gold-200 rounded-full flex items-center justify-center text-gold-600 font-bold text-sm">Ա</div>
-                        <div><p class="font-semibold text-gray-900 text-sm">Աննա Մ.</p><p class="text-xs text-gray-400">Երևան</p></div>
-                    </div>
+                    <div class="flex items-center gap-3"><div class="w-9 h-9 bg-gold-200 rounded-full flex items-center justify-center text-gold-600 font-bold text-sm">Ա</div><div><p class="font-semibold text-gray-900 text-sm">Աննա Մ.</p><p class="text-xs text-gray-400">Երևան</p></div></div>
                 </div>
                 <div class="fade-in bg-cream-100 rounded-2xl p-7" style="transition-delay:0.15s">
                     <div class="flex gap-0.5 mb-3">
@@ -325,10 +497,7 @@
                         <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                     </div>
                     <p class="text-gray-600 text-sm mb-5 leading-relaxed">"Հիանալի սպասարկում և արագ առաքում։ Սպիտակեղենը շատ փափուկ և հաճելի է մաշկի համար։ Շնորհակալ եմ Tehmi Buy-ին։"</p>
-                    <div class="flex items-center gap-3">
-                        <div class="w-9 h-9 bg-gold-200 rounded-full flex items-center justify-center text-gold-600 font-bold text-sm">Շ</div>
-                        <div><p class="font-semibold text-gray-900 text-sm">Շուշանիկ Ս.</p><p class="text-xs text-gray-400">Գյումրի</p></div>
-                    </div>
+                    <div class="flex items-center gap-3"><div class="w-9 h-9 bg-gold-200 rounded-full flex items-center justify-center text-gold-600 font-bold text-sm">Շ</div><div><p class="font-semibold text-gray-900 text-sm">Շուշանիկ Ս.</p><p class="text-xs text-gray-400">Գյումրի</p></div></div>
                 </div>
                 <div class="fade-in bg-cream-100 rounded-2xl p-7" style="transition-delay:0.3s">
                     <div class="flex gap-0.5 mb-3">
@@ -339,10 +508,7 @@
                         <svg class="w-4 h-4 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                     </div>
                     <p class="text-gray-600 text-sm mb-5 leading-relaxed">"Գնեցի նվեր մորս համար և նա շատ ուրախացավ։ Գույները չեն խամրում լվացումից հետո։ Հիանալի որակ է։"</p>
-                    <div class="flex items-center gap-3">
-                        <div class="w-9 h-9 bg-gold-200 rounded-full flex items-center justify-center text-gold-600 font-bold text-sm">Մ</div>
-                        <div><p class="font-semibold text-gray-900 text-sm">Մարիամ Հ.</p><p class="text-xs text-gray-400">Վանաձոր</p></div>
-                    </div>
+                    <div class="flex items-center gap-3"><div class="w-9 h-9 bg-gold-200 rounded-full flex items-center justify-center text-gold-600 font-bold text-sm">Մ</div><div><p class="font-semibold text-gray-900 text-sm">Մարիամ Հ.</p><p class="text-xs text-gray-400">Վանաձոր</p></div></div>
                 </div>
             </div>
         </div>
@@ -360,31 +526,16 @@
                 <div class="bg-white rounded-2xl p-8 shadow-sm fade-in">
                     <div class="space-y-6">
                         <div class="flex items-start gap-4">
-                            <div class="w-11 h-11 bg-gold-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                                <svg class="w-5 h-5 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                            </div>
-                            <div>
-                                <p class="font-semibold text-gray-900 text-sm">Հասցե</p>
-                                <p class="text-gray-500 text-sm">Էջմիածին, գ․ Այգեշատ</p>
-                            </div>
+                            <div class="w-11 h-11 bg-gold-100 rounded-xl flex items-center justify-center flex-shrink-0"><svg class="w-5 h-5 text-gold-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg></div>
+                            <div><p class="font-semibold text-gray-900 text-sm">Հասցե</p><p class="text-gray-500 text-sm">Էջմիածին, գ․ Այգեշատ</p></div>
                         </div>
                         <div class="flex items-start gap-4">
-                            <div class="w-11 h-11 bg-gold-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                                <svg class="w-5 h-5 text-gold-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                            </div>
-                            <div>
-                                <p class="font-semibold text-gray-900 text-sm">Instagram</p>
-                                <a href="https://www.instagram.com/tehmi._.buy/" target="_blank" class="text-gold-400 text-sm hover:text-gold-600 transition-colors">@tehmi._.buy</a>
-                            </div>
+                            <div class="w-11 h-11 bg-gold-100 rounded-xl flex items-center justify-center flex-shrink-0"><svg class="w-5 h-5 text-gold-500" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></div>
+                            <div><p class="font-semibold text-gray-900 text-sm">Instagram</p><a href="https://www.instagram.com/tehmi._.buy/" target="_blank" class="text-gold-400 text-sm hover:text-gold-600 transition-colors">@tehmi._.buy</a></div>
                         </div>
                         <div class="flex items-start gap-4">
-                            <div class="w-11 h-11 bg-gold-100 rounded-xl flex items-center justify-center flex-shrink-0">
-                                <svg class="w-5 h-5 text-gold-500" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                            </div>
-                            <div>
-                                <p class="font-semibold text-gray-900 text-sm">Facebook</p>
-                                <a href="https://www.facebook.com/profile.php?id=61589899370178" target="_blank" class="text-gold-400 text-sm hover:text-gold-600 transition-colors">Tehmi Buy</a>
-                            </div>
+                            <div class="w-11 h-11 bg-gold-100 rounded-xl flex items-center justify-center flex-shrink-0"><svg class="w-5 h-5 text-gold-500" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></div>
+                            <div><p class="font-semibold text-gray-900 text-sm">Facebook</p><a href="https://www.facebook.com/profile.php?id=61589899370178" target="_blank" class="text-gold-400 text-sm hover:text-gold-600 transition-colors">Tehmi Buy</a></div>
                         </div>
                     </div>
                 </div>
@@ -398,32 +549,27 @@
             <div class="grid md:grid-cols-3 gap-10 mb-10">
                 <div>
                     <img src="https://cdn.shopify.com/s/files/1/0796/1994/8567/files/c2ee87cb-c465-4e27-ba14-36c14a6405c5_1.png?v=1779919756" alt="Tehmi Buy" class="h-9 w-auto mb-4 brightness-0 invert">
-                    <p class="text-gray-400 text-xs leading-relaxed">Բարձրորակ անկողնային սպիտակեղեն՝ ձեր հարմարավետ քնի համար։ Tehmi Buy — որակի երաշխիք։</p>
+                    <p class="text-gray-400 text-xs leading-relaxed">Բարձրորակ անկողնային սպիտակեղեն, սրբիչներ և գիշերազգեստներ՝ ձեր հարմարավետ կյանքի համար։</p>
                 </div>
                 <div>
                     <h4 class="font-semibold text-sm mb-3">Արագ Հղումներ</h4>
                     <ul class="space-y-2">
                         <li><a href="#home" class="text-gray-400 text-xs hover:text-gold-400 transition-colors">Գլխավոր</a></li>
                         <li><a href="#catalog" class="text-gray-400 text-xs hover:text-gold-400 transition-colors">Կատալոգ</a></li>
-                        <li><a href="#features" class="text-gray-400 text-xs hover:text-gold-400 transition-colors">Առավելություններ</a></li>
+                        <li><a href="#towels" class="text-gray-400 text-xs hover:text-gold-400 transition-colors">Սրբիչներ</a></li>
+                        <li><a href="#blog" class="text-gray-400 text-xs hover:text-gold-400 transition-colors">Բլոգ</a></li>
                         <li><a href="#contact" class="text-gray-400 text-xs hover:text-gold-400 transition-colors">Կապ</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="font-semibold text-sm mb-3">Հետևեք Մեզ</h4>
                     <div class="flex gap-3">
-                        <a href="https://www.instagram.com/tehmi._.buy/" target="_blank" class="w-9 h-9 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gold-400 transition-colors">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-                        </a>
-                        <a href="https://www.facebook.com/profile.php?id=61589899370178" target="_blank" class="w-9 h-9 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gold-400 transition-colors">
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                        </a>
+                        <a href="https://www.instagram.com/tehmi._.buy/" target="_blank" class="w-9 h-9 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gold-400 transition-colors"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+                        <a href="https://www.facebook.com/profile.php?id=61589899370178" target="_blank" class="w-9 h-9 bg-gray-800 rounded-lg flex items-center justify-center hover:bg-gold-400 transition-colors"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg></a>
                     </div>
                 </div>
             </div>
-            <div class="border-t border-gray-800 pt-6 text-center">
-                <p class="text-gray-500 text-xs">© 2026 Tehmi Buy. Բոլոր իրավունքները պաշտպանված են։</p>
-            </div>
+            <div class="border-t border-gray-800 pt-6 text-center"><p class="text-gray-500 text-xs">© 2026 Tehmi Buy. Բոլոր իրավունքները պաշտպանված են։</p></div>
         </div>
     </footer>
 
@@ -434,22 +580,13 @@
             <div class="flex flex-col h-full">
                 <div class="flex items-center justify-between p-5 border-b">
                     <h3 class="text-lg font-bold text-gray-900">Զամբյուղ</h3>
-                    <button onclick="toggleCart()" class="p-1.5 rounded-full hover:bg-gray-100 transition-colors">
-                        <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-                    </button>
+                    <button onclick="toggleCart()" class="p-1.5 rounded-full hover:bg-gray-100 transition-colors"><svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
                 </div>
                 <div id="cartItems" class="flex-1 overflow-y-auto p-5">
-                    <div id="emptyCart" class="flex flex-col items-center justify-center h-full text-center">
-                        <svg class="w-14 h-14 text-gray-300 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
-                        <p class="text-gray-400">Զամբյուղը դատարկ է</p>
-                    </div>
+                    <div id="emptyCart" class="flex flex-col items-center justify-center h-full text-center"><svg class="w-14 h-14 text-gray-300 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg><p class="text-gray-400">Զամբյուղը դատարկ է</p></div>
                 </div>
                 <div id="cartFooter" class="hidden border-t p-5 space-y-3">
-                    <div class="flex justify-between items-center">
-                        <span class="text-gray-600 text-sm font-medium">Ընդհանուր</span>
-                        <span id="cartTotal" class="text-xl font-bold text-gray-900">0 դր</span>
-                    </div>
-                    <button onclick="orderFromCart()" class="btn-instagram w-full">📩 Պատվիրել Instagram-ով</button>
+                    <button onclick="orderFromCart()" class="btn-primary w-full">📩 Պատվիրել Instagram-ով</button>
                     <button onclick="toggleCart()" class="btn-secondary w-full text-sm py-2.5">Շարունակել Գնումները</button>
                 </div>
             </div>
@@ -460,233 +597,60 @@
     <div id="productModal" class="fixed inset-0 z-50 hidden">
         <div class="modal-backdrop absolute inset-0" onclick="closeProductModal()"></div>
         <div class="absolute inset-3 md:inset-10 bg-white rounded-2xl shadow-2xl overflow-hidden transform scale-95 opacity-0 transition-all duration-500" id="productPanel">
-            <button onclick="closeProductModal()" class="absolute top-3 right-3 z-10 p-2 rounded-full bg-white/80 hover:bg-white transition-colors shadow-lg">
-                <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-            </button>
+            <button onclick="closeProductModal()" class="absolute top-3 right-3 z-10 p-2 rounded-full bg-white/80 hover:bg-white transition-colors shadow-lg"><svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg></button>
             <div class="grid md:grid-cols-2 h-full overflow-y-auto" id="productModalContent"></div>
         </div>
     </div>
 
     <script>
         const products = [
-            {
-                id: 1,
-                title: "Անկողնային Սպիտակեղեն՝ Լյուքս",
-                category: "bedding",
-                images: [
-                    "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/Bedding_in_room_2K_202607052328.jpg?v=1783618654",
-                    "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/Bedding_in_room_2K_202607052329.jpg?v=1783618698"
-                ],
-                description: "Կարող եք պատվիրել Tehmi Buy-ից անկողնային սպիտակեղեն, կարված լյուքս կտորից։\nԸնդունում ենք պատվերներ՝ ըստ ձեր նախընտրած գույնի 🎨 և չափսի📏",
-                badge: null
-            },
-            {
-                id: 2,
-                title: "Սատինե Սպիտակեղեն",
-                category: "bedding",
-                images: [
-                    "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/1-______202606220212.jpg?v=1783619649",
-                    "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/2K_202606220209.jpg?v=1783619657"
-                ],
-                description: "Սիրով Ձեզ ենք ներկայացնում ևս մի գերշքեղ մոդել, որը մեծ հավանության էր արժանացել Ձեր կողմից🩵🥹\n\nԱնկողնային սպիտակեղեն՝ Սատին։",
-                badge: "bestseller"
-            },
-            {
-                id: 3,
-                title: "Ծաղկային Սպիտակեղեն",
-                category: "bedding",
-                images: [
-                    "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/202606192044.jpg?v=1783619665",
-                    "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/2K_202606192050.jpg?v=1783619699"
-                ],
-                description: "🌸 Նրբություն, հարմարավետություն և շքեղություն՝ մեկ հավաքածուում։ 💜\n\nԹարմացրեք Ձեր ննջասենյակի տեսքը այս գեղեցիկ ծաղկային անկողնային սպիտակեղենով և վայելեք կատարյալ հանգիստը։ ✨",
-                badge: "free-pillow"
-            },
-            {
-                id: 4,
-                title: "Ակցիա — Նոր Սպիտակեղեն",
-                category: "bedding",
-                images: [
-                    "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/202606301912.jpg?v=1783619684",
-                    "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/202606302016.jpg?v=1783619690"
-                ],
-                description: "✨Ակցիա, միայն 10 օր✨\n\nՄեր Նոր անկողնային սպիտակեղենը🥹🤍\n\n🫴🏻Ձեռք բերեք այս շքեղ անկողնային սպիտակեղենը 20,000 դրամով 30,000 դրամի փոխարեն։ ✨🚀",
-                badge: "sale",
-                price: 20000,
-                oldPrice: 30000
-            },
-            {
-                id: 5,
-                title: "Ծաղկային Հավաքածու",
-                category: "bedding",
-                images: [
-                    "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/1-__________202606241548.jpg?v=1783619697",
-                    "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/202606241550.jpg?v=1783619701"
-                ],
-                description: "Մեր այս նոր անկողնային սպիտակեղենի հավաքածուն՝ իր թավշյա երանգներով ու նուրբ ծաղկային նախշերով, ստեղծված է Ձեր տանը յուրահատուկ ջերմություն ու շքեղություն պարգևելու համար:🎀😍",
-                badge: null
-            },
-            {
-                id: 6,
-                title: "Պրեմիում Գիշերազգեստ",
-                category: "nightwear",
-                images: [
-                    "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/202606292147.jpg?v=1783619698",
-                    "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/202606292144.jpg?v=1783619710"
-                ],
-                description: "Մեր նոր պրեմիում գիշերազգեստը ստեղծված է Ձեր երեկոներն ու առավոտները կատարյալ դարձնելու համար:\n\nԱյն համադրելի է մեր նոր անկողնային սպիտակեղենի հետ։🥹🧵\n\n👑 Բարձրակարգ պրեմիում ատլաս՝ նուրբ թեթև փայլով\n🖤 Էսթետիկ սև ժանյակներ և թավշյա գոտի\n🪡 Պրոֆեսիոնալ աշխատանք",
-                badge: null
-            },
-            {
-                id: 7,
-                title: "Շքեղագույն Բարձեր",
-                category: "pillows",
-                images: [
-                    "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/202606301732.jpg?v=1783619707",
-                    "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/202606301734.jpg?v=1783619709"
-                ],
-                description: "Շքեղագույն բարձեր՝ ասեղնագործությամբ։",
-                badge: null
-            },
-            {
-                id: 8,
-                title: "Դասական Բարձի Երեսներ",
-                category: "pillows",
-                images: [
-                    "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/202606031940.jpg?v=1783619708",
-                    "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/50_70__70_70___202606031939.jpg?v=1783619707"
-                ],
-                description: "🤎Մեր նոր դասական նախշերով ու թագավորական երանգներով բարձի երեսները պատրաստ են էսթետիկա հաղորդել ձեր անկողնուն: Նուրբ հպում, անթերի կարեր և հանգստություն ձեր ննջասենյակում:\n\n🪡 Հասանելի չափսերն ու արժեքը.\n📐 50×70 սմ — 1200 դրամ\n📐 70×70 սմ — 1400 դրամ",
-                badge: null,
-                price: 1200,
-                oldPrice: null
-            },
-            {
-                id: 9,
-                title: "Նոր Ամառային Սպիտակեղեն",
-                category: "bedding",
-                images: [
-                    "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/2-______202606232033.jpg?v=1783619707",
-                    "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/202606232034.jpg?v=1783619725"
-                ],
-                description: "Նոր ԱՄԱՌԱՅԻՆ անկողնային սպիտակեղեն💙\n\nՁեզ ենք ներկայացնում ՆՈՐ մոդել, որը կարված է ՆՈՐ Ոճով😍\n\n📩Կարող եք պատվիրել Ձեր նախընտրած չափսով\n🎀Կտորի դիզայնն ընտրում եք Դուք\n🌞Սա ամռան լավագույն տարբերակն է✅",
-                badge: "new"
-            },
-            {
-                id: 10,
-                title: "Կանաչ Գիշերազգեստ",
-                category: "nightwear",
-                images: [
-                    "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/Girl_s_pajamas_and_slippers_adve__202607011626.jpg?v=1783619720",
-                    "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/photo_2026-07-01_16-12-57.jpg_2K_202607011622.jpg?v=1783619726"
-                ],
-                description: "Այս անկողնային սպիտակեղենի հետ համադրելի է մեր ատլասե գիշերազգեստը և հողաթափերը։💚🍃\n\n👑 Բարձրակարգ պրեմիում ատլաս՝ մաշկի համար անդիմադրելի հաճելի ու հով\n🎨 Թրենդային բաց կանաչ երանգներ և տրոպիկական էսթետիկա",
-                badge: null
-            },
-            {
-                id: 11,
-                title: "Վարդագույն Ծաղկային",
-                category: "bedding",
-                images: [
-                    "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/202606271550.jpg?v=1783619722",
-                    "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/2K_202606271929.jpg?v=1783619724"
-                ],
-                description: "🎨 Նուրբ վարդագույն ծաղիկների և էսթետիկ ծալքերի համադրություն",
-                badge: null
-            },
-            {
-                id: 12,
-                title: "Սրտիկների Հավաքածու",
-                category: "bedding",
-                images: [
-                    "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/2K_202605112110.jpg?v=1779919722",
-                    "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/IMG_9865.png?v=1779919666"
-                ],
-                description: "❤️‍🔥Ձեր ննջասենյակի նոր էսթետիկան: Մենք համադրել ենք ամենանուրբ սատինը սիրո խորհրդանիշ սրտիկների հետ:\n\n🎁 Հավաքածուն ներառում է.\n🌹 Սատինե շքեղ անկողնային սպիտակեղեն\n❤️ Նրբագեղ գիշերազգեստ\n🧸 Փափուկ և հարմարավետ հողաթափեր",
-                badge: null
-            },
-            {
-                id: 13,
-                title: "Տրոպիկական Հավաքածու",
-                category: "bedding",
-                images: [
-                    "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/202605271822_1.jpg?v=1779919613",
-                    "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/202605271825.jpg?v=1779919684"
-                ],
-                description: "Այ քեզ գեղեցիկ և շքեղ հավաքածու🥹🫵🏻\n\n🧵 Գիշերազգեստ և հողաթափեր\n💎 Պրեմիում դասի փայլուն և թեթև կտոր\n🌿 Գեղեցիկ արևադարձային պրինտ և էլեգանտ ձևվածք",
-                badge: null
-            },
-            {
-                id: 14,
-                title: "Ամսվա Bestseller",
-                category: "bedding",
-                images: [
-                    "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/202605261911.jpg?v=1779919689",
-                    "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/2K_202605261907.jpg?v=1779919689"
-                ],
-                description: "Ամսվա Bestseller — ամենավաճառվող մոդելը🏆",
-                badge: "bestseller"
-            },
-            {
-                id: 15,
-                title: "Պրեմիում Սատինե Հավաքածու",
-                category: "bedding",
-                images: [
-                    "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/22.png?v=1779919639",
-                    "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/2121.png?v=1779919655"
-                ],
-                description: "Այս հավաքածուն հասարակ ընտրություն չէ... 👑✨\n\nՄեր նոր՝ պրեմիում դասի սատինե և լյուք կտորների համադրությամբ անկողնային սպիտակեղենը ստեղծված է նուրբ ճաշակի և բացառիկության սիրահարների համար:🫯💚\n\n💎 Լյուքս որակ, մաքուր կարեր\n🪡 Անհատական կար. Յուրաքանչյուր պատվեր կարվում է ֆիքսված կամ ձեր նախընտրած չափսերով",
-                badge: "hot"
-            },
-            {
-                id: 16,
-                title: "Լավանդայի Էսթետիկա",
-                category: "bedding",
-                images: [
-                    "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/2K_202607081624.jpg?v=1783619722",
-                    "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/2K_202607081627.jpg?v=1783619719",
-                    "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/2K_202607081625.jpg?v=1783619702"
-                ],
-                description: "💜🪻Թարմացրեք Ձեր տան տեսքը մեր նոր՝ լավանդայի էսթետիկայով ներշնչված հավաքածուով: Նուրբ գույներն ու բնական կտորը ստեղծում են կատարյալ հանգստություն յուրաքանչյուր օրվա համար:\n\n🌿 Բնական, շնչող ու պրեմիում որակի չիթ\n🪡 Մասնագիտացված կար՝ ցանկացած չափսի անկողնու համար",
-                badge: "new"
-            },
-            {
-                id: 17,
-                title: "Բազմոցի Ծածկոցներ",
-                category: "sofa",
-                images: [
-                    "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/19b6fa03fd013d4c8409e49108fe52bb_e6ae8130-6131-40a4-9078-c269f0edb8a0.png?v=1783619753",
-                    "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/3.png?v=1783619753",
-                    "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/4_85a3565e-c817-4be7-92ff-b15a72a4cf00.png?v=1783619753",
-                    "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/2.png?v=1783619753"
-                ],
-                description: "Կատարելություն՝ ամեն մի կարի մեջ։\n\nԱրդեն կարող եք պատվիրել նաև ԲԱԶՄՈՑԻ ԾԱԾԿՈՑՆԵՐ\n\n✅Անհատական դիզայն և չափսեր՝ կարված հատուկ ձեր բազմոցի համար\n✅Բարձրորակ գործվածք, որը պահպանում է իր տեսքն ու փափկությունը երկար ժամանակ\n✅Պաշտպանություն և ոճ՝ մեկ կատարյալ մոդելում",
-                badge: "new"
-            }
+            { id: 1, title: "Անկողնային Սպիտակեղեն՝ Լյուքս", category: "bedding", images: ["https://cdn.shopify.com/s/files/1/0796/1994/8567/files/Bedding_in_room_2K_202607052328.jpg?v=1783618654", "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/Bedding_in_room_2K_202607052329.jpg?v=1783618698"], description: "Կարող եք պատվիրել Tehmi Buy-ից անկողնային սպիտակեղեն, կարված լյուքս կտորից։\nԸնդունում ենք պատվերներ՝ ըստ ձեր նախընտրած գույնի 🎨 և չափսի📏", badge: null },
+            { id: 2, title: "Սատինե Սպիտակեղեն", category: "bedding", images: ["https://cdn.shopify.com/s/files/1/0796/1994/8567/files/1-______202606220212.jpg?v=1783619649", "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/2K_202606220209.jpg?v=1783619657"], description: "Սիրով Ձեզ ենք ներկայացնում ևս մի գերշքեղ մոդել, որը մեծ հավանության էր արժանացել Ձեր կողմից🩵🥹\n\nԱնկողնային սպիտակեղեն՝ Սատին։", badge: "bestseller" },
+            { id: 3, title: "Ծաղկային Սպիտակեղեն", category: "bedding", images: ["https://cdn.shopify.com/s/files/1/0796/1994/8567/files/202606192044.jpg?v=1783619665", "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/2K_202606192050.jpg?v=1783619699"], description: "🌸 Նրբություն, հարմարավետություն և շքեղություն՝ մեկ հավաքածուում։ 💜\n\nԹարմացրեք Ձեր ննջասենյակի տեսքը այս գեղեցիկ ծաղկային անկողնային սպիտակեղենով և վայելեք կատարյալ հանգիստը։ ✨", badge: "free-pillow" },
+            { id: 4, title: "Ակցիա — Նոր Սպիտակեղեն", category: "bedding", images: ["https://cdn.shopify.com/s/files/1/0796/1994/8567/files/202606301912.jpg?v=1783619684", "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/202606302016.jpg?v=1783619690"], description: "✨Ակցիա, միայն 10 օր✨\n\n🫴🏻Ձեռք բերեք այս շքեղ անկողնային սպիտակեղենը 20,000 դրամով 30,000 դրամի փոխարեն։ ✨🚀", badge: "sale" },
+            { id: 5, title: "Ծաղկային Հավաքածու", category: "bedding", images: ["https://cdn.shopify.com/s/files/1/0796/1994/8567/files/1-__________202606241548.jpg?v=1783619697", "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/202606241550.jpg?v=1783619701"], description: "Մեր այս նոր անկողնային սպիտակեղենի հավաքածուն՝ իր թավշյա երանգներով ու նուրբ ծաղկային նախշերով, ստեղծված է Ձեր տանը յուրահատուկ ջերմություն ու շքեղություն պարգևելու համար:🎀😍", badge: null },
+            { id: 6, title: "Պրեմիում Գիշերազգեստ", category: "nightwear", images: ["https://cdn.shopify.com/s/files/1/0796/1994/8567/files/202606292147.jpg?v=1783619698", "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/202606292144.jpg?v=1783619710"], description: "Մեր նոր պրեմիում գիշերազգեստը ստեղծված է Ձեր երեկոներն ու առավոտները կատարյալ դարձնելու համար:\n\n👑 Բարձրակարգ պրեմիում ատլաս՝ նուրբ թեթև փայլով\n🖤 Էսթետիկ սև ժանյակներ և թավշյա գոտի\n🪡 Պրոֆեսիոնալ աշխատանք", badge: null },
+            { id: 7, title: "Շքեղագույն Բարձեր", category: "pillows", images: ["https://cdn.shopify.com/s/files/1/0796/1994/8567/files/202606301732.jpg?v=1783619707", "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/202606301734.jpg?v=1783619709"], description: "Շքեղագույն բարձեր՝ ասեղնագործությամբ։", badge: null },
+            { id: 8, title: "Դասական Բարձի Երեսներ", category: "pillows", images: ["https://cdn.shopify.com/s/files/1/0796/1994/8567/files/202606031940.jpg?v=1783619708", "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/50_70__70_70___202606031939.jpg?v=1783619707"], description: "🤎Մեր նոր դասական նախշերով ու թագավորական երանգներով բարձի երեսները պատրաստ են էսթետիկա հաղորդել ձեր անկողնուն:\n\n🪡 Հասանելի չափսերն ու արժեքը.\n📐 50×70 սմ — 1200 դրամ\n📐 70×70 սմ — 1400 դրամ", badge: null },
+            { id: 9, title: "Նոր Ամառային Սպիտակեղեն", category: "bedding", images: ["https://cdn.shopify.com/s/files/1/0796/1994/8567/files/2-______202606232033.jpg?v=1783619707", "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/202606232034.jpg?v=1783619725"], description: "Նոր ԱՄԱՌԱՅԻՆ անկողնային սպիտակեղեն💙\n\n📩Կարող եք պատվիրել Ձեր նախընտրած չափսով\n🎀Կտորի դիզայնն ընտրում եք Դուք\n🌞Սա ամռան լավագույն տարբերակն է✅", badge: "new" },
+            { id: 10, title: "Կանաչ Գիշերազգեստ", category: "nightwear", images: ["https://cdn.shopify.com/s/files/1/0796/1994/8567/files/Girl_s_pajamas_and_slippers_adve__202607011626.jpg?v=1783619720", "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/photo_2026-07-01_16-12-57.jpg_2K_202607011622.jpg?v=1783619726"], description: "Այս անկողնային սպիտակեղենի հետ համադրելի է մեր ատլասե գիշերազգեստը և հողաթափերը։💚🍃\n\n👑 Բարձրակարգ պրեմիում ատլաս՝ մաշկի համար անդիմադրելի հաճելի ու հով\n🎨 Թրենդային բաց կանաչ երանգներ և տրոպիկական էսթետիկա", badge: null },
+            { id: 11, title: "Վարդագույն Ծաղկային", category: "bedding", images: ["https://cdn.shopify.com/s/files/1/0796/1994/8567/files/202606271550.jpg?v=1783619722", "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/2K_202606271929.jpg?v=1783619724"], description: "🎨 Նուրբ վարդագույն ծաղիկների և էսթետիկ ծալքերի համադրություն", badge: null },
+            { id: 12, title: "Սրտիկների Հավաքածու", category: "bedding", images: ["https://cdn.shopify.com/s/files/1/0796/1994/8567/files/2K_202605112110.jpg?v=1779919722", "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/IMG_9865.png?v=1779919666"], description: "❤️‍🔥Ձեր ննջասենյակի նոր էսթետիկան: Մենք համադրել ենք ամենանուրբ սատինը սիրո խորհրդանիշ սրտիկների հետ:\n\n🎁 Հավաքածուն ներառում է.\n🌹 Սատինե շքեղ անկողնային սպիտակեղեն\n❤️ Նրբագեղ գիշերազգեստ\n🧸 Փափուկ և հարմարավետ հողաթափեր", badge: null },
+            { id: 13, title: "Տրոպիկական Հավաքածու", category: "bedding", images: ["https://cdn.shopify.com/s/files/1/0796/1994/8567/files/202605271822_1.jpg?v=1779919613", "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/202605271825.jpg?v=1779919684"], description: "Այ քեզ գեղեցիկ և շքեղ հավաքածու🥹🫵🏻\n\n🧵 Գիշերազգեստ և հողաթափեր\n💎 Պրեմիում դասի փայլուն և թեթև կտոր\n🌿 Գեղեցիկ արևադարձային պրինտ և էլեգանտ ձևվածք", badge: null },
+            { id: 14, title: "Ամսվա Bestseller", category: "bedding", images: ["https://cdn.shopify.com/s/files/1/0796/1994/8567/files/202605261911.jpg?v=1779919689", "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/2K_202605261907.jpg?v=1779919689"], description: "Ամսվա Bestseller — ամենավաճառվող մոդելը🏆", badge: "bestseller" },
+            { id: 15, title: "Պրեմիում Սատինե Հավաքածու", category: "bedding", images: ["https://cdn.shopify.com/s/files/1/0796/1994/8567/files/22.png?v=1779919639", "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/2121.png?v=1779919655"], description: "Այս հավաքածուն հասարակ ընտրություն չէ... 👑✨\n\n💎 Լյուքս որակ, մաքուր կարեր\n🪡 Անհատական կար. Յուրաքանչյուր պատվեր կարվում է ֆիքսված կամ ձեր նախընտրած չափսերով", badge: "hot" },
+            { id: 16, title: "Լավանդայի Էսթետիկա", category: "bedding", images: ["https://cdn.shopify.com/s/files/1/0796/1994/8567/files/2K_202607081624.jpg?v=1783619722", "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/2K_202607081627.jpg?v=1783619719", "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/2K_202607081625.jpg?v=1783619702"], description: "💜🪻Թարմացրեք Ձեր տան տեսքը մեր նոր՝ լավանդայի էսթետիկայով ներշնչված հավաքածուով:\n\n🌿 Բնական, շնչող ու պրեմիում որակի չիթ\n🪡 Մասնագիտացված կար՝ ցանկացած չափսի անկողնու համար", badge: "new" },
+            { id: 17, title: "Բազմոցի Ծածկոցներ", category: "sofa", images: ["https://cdn.shopify.com/s/files/1/0796/1994/8567/files/19b6fa03fd013d4c8409e49108fe52bb_e6ae8130-6131-40a4-9078-c269f0edb8a0.png?v=1783619753", "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/3.png?v=1783619753", "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/4_85a3565e-c817-4be7-92ff-b15a72a4cf00.png?v=1783619753", "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/2.png?v=1783619753"], description: "Կատարելություն՝ ամեն մի կարի մեջ։\n\n✅Անհատական դիզայն և չափսեր\n✅Բարձրորակ գործվածք\n✅Պաշտպանություն և ոճ", badge: "new" },
+            { id: 18, title: "Պրեմիում Սրբիչներ", category: "towels", images: ["https://cdn.shopify.com/s/files/1/0796/1994/8567/files/2K_202607081653.jpg?v=1783629020", "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/2K_202605182340.jpg?v=1783629019", "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/2K_202607081652_36afba56-072b-45bd-b0c1-71fc80e949aa.jpg?v=1783629019", "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/2K_202607081652.jpg?v=1783629019", "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/202605182339_80c9fb17-8864-4fce-9ed1-167c8f6947e1.jpg?v=1783629019", "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/2K_202605182340_2652f72b-18e4-4655-9f52-d32ac92c138e.jpg?v=1783629055"], description: "🧖 Պրեմիում սրբիչներ՝ 100% բնական բամբակից。\n\n✅ Բարձր ներծծողականություն\n✅ Փափուկ և դիմացկուն\n✅ Անհատական չափսերով կարում\n✅ Հիպոալերգենիկ", badge: "new" },
+            { id: 19, title: "Սատինե Անկողնային Սպիտակեղեն", category: "bedding", images: ["https://cdn.shopify.com/s/files/1/0796/1994/8567/files/A9B2BC_________202606082221.jpg?v=1783686495"], description: "Սատինե անկողնային սպիտակեղեն՝ բարձրորակ կտորից։ Նուրբ և փափուկ՝ կատարյալ քնի համար։", badge: null },
+            { id: 20, title: "Գիշերազգեստ — Դասական", category: "nightwear", images: ["https://cdn.shopify.com/s/files/1/0796/1994/8567/files/202605271822.jpg?v=1783686449"], description: "Գիշերազգեստ՝ պրեմիում ատլասից։ Հարմարավետ և էլեգանտ։", badge: null },
+            { id: 21, title: "Գերշքեղ Անկողնային Սպիտակեղեն", category: "bedding", images: ["https://cdn.shopify.com/s/files/1/0796/1994/8567/files/Generate_from_distance_blanket_2K_202607021555.jpg?v=1783686545", "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/Generate_from_distance_blanket_2K_202607021554_jpeg_2K_202607021603.jpg?v=1783686548"], description: "Գերշքեղ անկողնային սպիտակեղեն՝ ձեր ննջասենյակի կատարելության համար։ Պրեմիում որակ, շքեղ տեսք։", badge: null },
+            { id: 22, title: "Սատինե Անկողնային Սպիտակեղեն", category: "bedding", images: ["https://cdn.shopify.com/s/files/1/0796/1994/8567/files/ChatGPT_Image_5_2026_._20_29_20.png?v=1783686523", "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/ChatGPT_Image_5_2026_._20_29_10.png?v=1783686520"], description: "Սատինե անկողնային սպիտակեղեն՝ ժամանակակից դիզայնով։ Նուրբ գույներ և բարձր որակ։", badge: null },
+            { id: 23, title: "Ամառային Ծածկոցներ ☀️", category: "summer", images: ["https://cdn.shopify.com/s/files/1/0796/1994/8567/files/202606012005.jpg?v=1783686621", "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/202606012016.jpg?v=1783686649"], description: "☀️ Ամառային ծածկոցներ՝ թեթև և շնչող կտորից։ Իդեալական տաք օրերի համար։\n\n🌿 Բնական գործվածք\n❄️ Սառը և հաճելի հպում\n🎨 Տարբեր գույների ընտրանի", badge: "summer" },
+            { id: 24, title: "Գիշերազգեստ — Պրեմիում", category: "nightwear", images: ["https://cdn.shopify.com/s/files/1/0796/1994/8567/files/2K_202605302055.jpg?v=1783686665"], description: "Գիշերազգեստ՝ պրեմիում դասի։ Փափուկ, հարմարավետ և էսթետիկ։", badge: null },
+            { id: 25, title: "Սատինե Անկողնային Սպիտակեղեն", category: "bedding", images: ["https://cdn.shopify.com/s/files/1/0796/1994/8567/files/202605140108.jpg?v=1783686584"], description: "Սատինե անկողնային սպիտակեղեն՝ դասական ոճով։ Մաքուր կարեր, դիմացկուն գույներ։", badge: null },
+            { id: 26, title: "Ներքնակի Երեսներ", category: "mattress", images: ["https://cdn.shopify.com/s/files/1/0796/1994/8567/files/2K_202606141736.jpg?v=1783686566", "https://cdn.shopify.com/s/files/1/0796/1994/8567/files/50.png?v=1783686565"], description: "Ներքնակների երեսներ՝ բարձրորակ գործվածքից։ Պաշտպանում են ներքնակը և ապահովում լրացուցիչ հարմարավետություն։\n\n✅ Բնական կտոր\n✅ Հեշտ լվացվող\n✅ Տարբեր չափսեր", badge: null },
+            { id: 27, title: "Գիշերազգեստ — Էլեգանտ", category: "nightwear", images: ["https://cdn.shopify.com/s/files/1/0796/1994/8567/files/202605271822.jpg?v=1783686449"], description: "Գիշերազգեստ՝ էլեգանտ դիզայնով։ Կատարյալ համադրություն մեր անկողնային սպիտակեղենի հետ։", badge: null }
         ];
 
         let cart = [];
         let currentSlide = {};
+        let towelSlideIdx = 0;
+        const towelImages = products.find(p => p.id === 18)?.images || [];
 
         function formatPrice(p) { return p ? p.toLocaleString('hy-AM') + ' դր' : ''; }
-
         function getBadgeHTML(badge) {
             if (!badge) return '';
-            const labels = { new: 'ՆՈՐ', sale: 'ԱԿՑԻԱ', hot: 'ՀԻԹ', bestseller: '⭐ BESTSELLER', 'free-pillow': '🎁 +Բարձ Նվեր' };
-            const cls = badge === 'sale' ? 'badge-sale' : badge === 'new' ? 'badge-new' : badge === 'hot' ? 'badge-hot' : badge === 'bestseller' ? 'badge-bestseller' : 'badge-new';
+            const labels = { new: 'ՆՈՐ', sale: 'ԱԿՑԻԱ', hot: 'ՀԻԹ', bestseller: '⭐ BESTSELLER', 'free-pillow': '🎁 +Բարձ Նվեր', summer: '☀️ ԱՄԱՌԱՅԻՆ' };
+            const cls = badge === 'sale' ? 'badge-sale' : badge === 'new' ? 'badge-new' : badge === 'hot' ? 'badge-hot' : badge === 'bestseller' ? 'badge-bestseller' : badge === 'summer' ? 'badge-summer' : 'badge-new';
             return `<span class="${cls} text-white text-[10px] font-bold px-3 py-1 rounded-full absolute top-3 left-3 z-10">${labels[badge]}</span>`;
         }
-
-        function getCategoryName(cat) {
-            const names = { bedding: 'Անկողնային', nightwear: 'Գիշերազգեստ', pillows: 'Բարձի Երեսներ', sofa: 'Բազմոցի Ծածկոցներ' };
-            return names[cat] || cat;
-        }
+        function getCategoryName(cat) { const n = { bedding: 'Անկողնային', nightwear: 'Գիշերազգեստ', pillows: 'Բարձի Երեսներ', sofa: 'Բազմոցի Ծածկոցներ', towels: 'Սրբիչներ', mattress: 'Ներքնակի Երեսներ', summer: '☀️ Ամառային Ծածկոցներ' }; return n[cat] || cat; }
 
         function renderProducts(category = 'all') {
             const grid = document.getElementById('productGrid');
             const filtered = category === 'all' ? products : products.filter(p => p.category === category);
             currentSlide = {};
-
             grid.innerHTML = filtered.map((product, idx) => `
                 <div class="product-card scale-in" style="transition-delay:${idx * 0.06}s" onclick="openProductModal(${product.id})">
                     ${getBadgeHTML(product.badge)}
@@ -695,34 +659,22 @@
                             ${product.images.map(img => `<img src="${img}" alt="${product.title}" class="product-img" onclick="event.stopPropagation(); openZoom('${img}')" style="aspect-ratio:4/3">`).join('')}
                         </div>
                         ${product.images.length > 1 ? `
-                            <button onclick="event.stopPropagation(); slideGallery(${product.id}, -1)" class="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 bg-white/80 rounded-full flex items-center justify-center hover:bg-white transition-colors shadow-sm z-10">
-                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-                            </button>
-                            <button onclick="event.stopPropagation(); slideGallery(${product.id}, 1)" class="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 bg-white/80 rounded-full flex items-center justify-center hover:bg-white transition-colors shadow-sm z-10">
-                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-                            </button>
-                            <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
-                                ${product.images.map((_, i) => `<div class="gallery-dot w-1.5 h-1.5 rounded-full bg-white/50 transition-all" data-product="${product.id}" data-index="${i}"></div>`).join('')}
-                            </div>
+                            <button onclick="event.stopPropagation(); slideGallery(${product.id}, -1)" class="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 bg-white/80 rounded-full flex items-center justify-center hover:bg-white transition-colors shadow-sm z-10"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg></button>
+                            <button onclick="event.stopPropagation(); slideGallery(${product.id}, 1)" class="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 bg-white/80 rounded-full flex items-center justify-center hover:bg-white transition-colors shadow-sm z-10"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></button>
+                            <div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">${product.images.map((_, i) => `<div class="gallery-dot w-1.5 h-1.5 rounded-full bg-white/50 transition-all" data-product="${product.id}" data-index="${i}"></div>`).join('')}</div>
                         ` : ''}
                     </div>
                     <div class="p-4">
                         <p class="text-[10px] text-gold-400 font-semibold uppercase tracking-wider mb-1">${getCategoryName(product.category)}</p>
                         <h3 class="font-semibold text-gray-900 text-sm mb-3 line-clamp-2 leading-snug">${product.title}</h3>
-                        <div class="flex items-center gap-2 mb-3">
-                            ${product.oldPrice ? `<span class="text-xs text-gray-400 line-through">${formatPrice(product.oldPrice)}</span><span class="text-sm font-bold text-red-500">${formatPrice(product.price)}</span>` : ''}
-                        </div>
                         <div class="flex gap-2">
-                            <button onclick="event.stopPropagation(); addToCart(${product.id})" class="flex-1 btn-primary text-xs py-2.5">🛒 Ավելացնել Զամբյուղ</button>
-                            <a href="https://www.instagram.com/tehmi._.buy/" target="_blank" onclick="event.stopPropagation()" class="btn-instagram text-xs py-2.5 px-4 whitespace-nowrap">📩 Պատվիրել</a>
+                            <button onclick="event.stopPropagation(); addToCart(${product.id})" class="flex-1 btn-primary text-xs py-2.5">🛒 Ավելացնել</button>
+                            <a href="https://www.instagram.com/tehmi._.buy/" target="_blank" onclick="event.stopPropagation()" class="btn-primary text-xs py-2.5 px-4 whitespace-nowrap">📩 Պատվիրել</a>
                         </div>
                     </div>
                 </div>
             `).join('');
-
-            setTimeout(() => {
-                document.querySelectorAll('.scale-in').forEach(el => observer.observe(el));
-            }, 100);
+            setTimeout(() => { document.querySelectorAll('.scale-in').forEach(el => observer.observe(el)); }, 100);
         }
 
         function slideGallery(productId, dir) {
@@ -732,10 +684,7 @@
             if (currentSlide[productId] < 0) currentSlide[productId] = product.images.length - 1;
             if (currentSlide[productId] >= product.images.length) currentSlide[productId] = 0;
             const track = document.getElementById(`track-${productId}`);
-            if (track) {
-                track.style.transform = `translateX(-${currentSlide[productId] * 100}%)`;
-                updateDots(productId, currentSlide[productId]);
-            }
+            if (track) { track.style.transform = `translateX(-${currentSlide[productId] * 100}%)`; updateDots(productId, currentSlide[productId]); }
         }
 
         function updateDots(productId, activeIndex) {
@@ -747,9 +696,25 @@
             });
         }
 
+        function slideTowelGallery(dir) {
+            towelSlideIdx += dir;
+            if (towelSlideIdx < 0) towelSlideIdx = towelImages.length - 1;
+            if (towelSlideIdx >= towelImages.length) towelSlideIdx = 0;
+            const track = document.getElementById('towel-track-main');
+            if (track) track.style.transform = `translateX(-${towelSlideIdx * 100}%)`;
+            updateTowelDots();
+        }
+
+        function updateTowelDots() {
+            const container = document.getElementById('towelDots');
+            if (!container) return;
+            container.innerHTML = towelImages.map((_, i) => `<div class="w-${i === towelSlideIdx ? '4' : '1.5'} h-1.5 rounded-full transition-all ${i === towelSlideIdx ? 'bg-white' : 'bg-white/50'}"></div>`).join('');
+        }
+
         function filterCategory(cat) {
             document.querySelectorAll('.category-pill').forEach(b => b.classList.remove('active'));
-            document.querySelector(`.category-pill[data-category="${cat}"]`)?.classList.add('active');
+            const target = document.querySelector(`.category-pill[data-category="${cat}"]`);
+            if (target) target.classList.add('active');
             renderProducts(cat);
         }
 
@@ -761,42 +726,28 @@
             });
         });
 
-        // Cart
         function addToCart(productId) {
             const product = products.find(p => p.id === productId);
             const existing = cart.find(item => item.id === productId);
-            if (existing) { existing.qty += 1; }
-            else { cart.push({ ...product, qty: 1 }); }
+            if (existing) existing.qty += 1;
+            else cart.push({ ...product, qty: 1 });
             updateCart();
             showToast(product.title);
         }
 
-        function removeFromCart(productId) {
-            cart = cart.filter(item => item.id !== productId);
-            updateCart();
-        }
-
+        function removeFromCart(productId) { cart = cart.filter(item => item.id !== productId); updateCart(); }
         function updateQty(productId, delta) {
             const item = cart.find(i => i.id === productId);
-            if (item) {
-                item.qty += delta;
-                if (item.qty <= 0) { removeFromCart(productId); return; }
-            }
+            if (item) { item.qty += delta; if (item.qty <= 0) { removeFromCart(productId); return; } }
             updateCart();
         }
 
         function updateCart() {
             const countEl = document.getElementById('cartCount');
             const itemsEl = document.getElementById('cartItems');
-            const emptyEl = document.getElementById('emptyCart');
             const footerEl = document.getElementById('cartFooter');
-            const totalEl = document.getElementById('cartTotal');
             const totalItems = cart.reduce((s, i) => s + i.qty, 0);
-            const totalPrice = cart.reduce((s, i) => s + ((i.price || 0) * i.qty), 0);
-
-            if (totalItems > 0) { countEl.classList.remove('hidden'); countEl.textContent = totalItems; }
-            else { countEl.classList.add('hidden'); }
-
+            if (totalItems > 0) { countEl.classList.remove('hidden'); countEl.textContent = totalItems; } else { countEl.classList.add('hidden'); }
             if (cart.length === 0) {
                 itemsEl.innerHTML = `<div id="emptyCart" class="flex flex-col items-center justify-center h-full text-center"><svg class="w-14 h-14 text-gray-300 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg><p class="text-gray-400">Զամբյուղը դատարկ է</p></div>`;
                 footerEl.classList.add('hidden');
@@ -806,21 +757,17 @@
                         <img src="${item.images[0]}" alt="${item.title}" class="w-16 h-16 rounded-xl object-cover flex-shrink-0">
                         <div class="flex-1 min-w-0">
                             <h4 class="font-semibold text-gray-900 text-xs line-clamp-2">${item.title}</h4>
-                            ${item.price ? `<p class="text-gold-400 font-bold text-xs mt-0.5">${formatPrice(item.price)}</p>` : ''}
                             <div class="flex items-center gap-2 mt-1.5">
                                 <button onclick="updateQty(${item.id},-1)" class="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 text-xs">−</button>
                                 <span class="text-xs font-semibold w-4 text-center">${item.qty}</span>
                                 <button onclick="updateQty(${item.id},1)" class="w-6 h-6 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 text-xs">+</button>
-                                <button onclick="removeFromCart(${item.id})" class="ml-auto text-gray-300 hover:text-red-500 transition-colors">
-                                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
-                                </button>
+                                <button onclick="removeFromCart(${item.id})" class="ml-auto text-gray-300 hover:text-red-500 transition-colors"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg></button>
                             </div>
                         </div>
                     </div>
                 `).join('');
                 footerEl.classList.remove('hidden');
             }
-            totalEl.textContent = totalPrice > 0 ? formatPrice(totalPrice) : '—';
         }
 
         function toggleCart() {
@@ -837,23 +784,15 @@
         }
 
         function orderFromCart() {
-            let msg = "Ողջույն! Ցանկանում եմ պատվիրել:\n\n";
-            cart.forEach(item => {
-                msg += `• ${item.title} × ${item.qty}\n`;
-            });
-            const total = cart.reduce((s, i) => s + ((i.price || 0) * i.qty), 0);
-            msg += `\nԸնդհանուր: ${total > 0 ? formatPrice(total) : '—'}`;
-            window.open(`https://www.instagram.com/tehmi._.buy/`, '_blank');
+            window.open('https://www.instagram.com/tehmi._.buy/', '_blank');
         }
 
-        // Product Modal
         function openProductModal(productId) {
             const product = products.find(p => p.id === productId);
             const modal = document.getElementById('productModal');
             const panel = document.getElementById('productPanel');
             const content = document.getElementById('productModalContent');
             currentSlide[productId] = 0;
-
             content.innerHTML = `
                 <div class="relative bg-cream-100 overflow-hidden">
                     <div class="gallery-container h-full" id="modal-gallery-${productId}" style="min-height:400px">
@@ -861,12 +800,8 @@
                             ${product.images.map(img => `<img src="${img}" alt="${product.title}" onclick="openZoom('${img}')" class="h-full w-full object-cover cursor-zoom-in flex-shrink-0" style="aspect-ratio:4/3">`).join('')}
                         </div>
                         ${product.images.length > 1 ? `
-                            <button onclick="slideGallery(${productId},-1)" class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 bg-white/80 rounded-full flex items-center justify-center hover:bg-white transition-colors shadow-sm z-10">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-                            </button>
-                            <button onclick="slideGallery(${productId},1)" class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 bg-white/80 rounded-full flex items-center justify-center hover:bg-white transition-colors shadow-sm z-10">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-                            </button>
+                            <button onclick="slideGallery(${productId},-1)" class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 bg-white/80 rounded-full flex items-center justify-center hover:bg-white transition-colors shadow-sm z-10"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg></button>
+                            <button onclick="slideGallery(${productId},1)" class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 bg-white/80 rounded-full flex items-center justify-center hover:bg-white transition-colors shadow-sm z-10"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg></button>
                         ` : ''}
                     </div>
                 </div>
@@ -874,15 +809,12 @@
                     ${getBadgeHTML(product.badge)}
                     <p class="text-gold-400 font-semibold text-xs uppercase tracking-wider mb-2">${getCategoryName(product.category)}</p>
                     <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">${product.title}</h2>
-                    ${product.oldPrice ? `<div class="flex items-center gap-3 mb-4"><span class="text-xs text-gray-400 line-through">${formatPrice(product.oldPrice)}</span><span class="text-xl font-bold text-red-500">${formatPrice(product.price)}</span><span class="bg-red-100 text-red-600 text-xs font-semibold px-2 py-0.5 rounded-full">-${Math.round((1 - product.price / product.oldPrice) * 100)}%</span></div>` : ''}
                     <p class="text-gray-600 text-sm leading-relaxed whitespace-pre-line mb-6">${product.description}</p>
                     <div class="flex gap-3">
                         <button onclick="addToCart(${product.id}); closeProductModal();" class="btn-primary flex-1 text-sm">🛒 Ավելացնել Զամբյուղ</button>
-                        <a href="https://www.instagram.com/tehmi._.buy/" target="_blank" class="btn-instagram text-sm px-5 whitespace-nowrap">📩 Պատվիրել</a>
+                        <a href="https://www.instagram.com/tehmi._.buy/" target="_blank" class="btn-primary text-sm px-5 whitespace-nowrap">📩 Պատվիրել</a>
                     </div>
-                    <div class="mt-6 bg-gold-50 rounded-xl p-4">
-                        <p class="text-xs text-gold-600 font-medium">📩 Ավելի արագ արձագանքի, քննարկումների, պատվիրելու համար գրեք նամակ մեր Instagram-ին։</p>
-                    </div>
+                    <div class="mt-6 bg-gold-50 rounded-xl p-4"><p class="text-xs text-gold-600 font-medium">📩 Ավելի արագ արձագանքի, քննարկումների, պատվիրելու համար գրեք նամակ մեր Instagram-ին։</p></div>
                     <div class="grid grid-cols-3 gap-3 mt-6 pt-6 border-t">
                         <div class="text-center"><svg class="w-5 h-5 text-gold-400 mx-auto mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/></svg><p class="text-[10px] text-gray-500">Արագ Առաքում</p></div>
                         <div class="text-center"><svg class="w-5 h-5 text-gold-400 mx-auto mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg><p class="text-[10px] text-gray-500">14 Օր Վերադարձ</p></div>
@@ -890,7 +822,6 @@
                     </div>
                 </div>
             `;
-
             modal.classList.remove('hidden');
             document.body.style.overflow = 'hidden';
             setTimeout(() => { panel.style.transform = 'scale(1)'; panel.style.opacity = '1'; }, 10);
@@ -905,19 +836,9 @@
             setTimeout(() => { modal.classList.add('hidden'); document.body.style.overflow = ''; }, 400);
         }
 
-        // Zoom
-        function openZoom(src) {
-            document.getElementById('zoomImage').src = src;
-            document.getElementById('zoomOverlay').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
+        function openZoom(src) { document.getElementById('zoomImage').src = src; document.getElementById('zoomOverlay').classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function closeZoom() { document.getElementById('zoomOverlay').classList.remove('active'); document.body.style.overflow = ''; }
 
-        function closeZoom() {
-            document.getElementById('zoomOverlay').classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        // Toast
         function showToast(name) {
             const container = document.getElementById('toastContainer');
             const toast = document.createElement('div');
@@ -927,54 +848,19 @@
             setTimeout(() => toast.remove(), 3000);
         }
 
-        // Scroll animations
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-
+        const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); }); }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
         document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right, .scale-in').forEach(el => observer.observe(el));
 
-        // Navbar scroll
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            navbar.classList.toggle('nav-scrolled', window.pageYOffset > 50);
-        });
+        window.addEventListener('scroll', () => { const navbar = document.getElementById('navbar'); navbar.classList.toggle('nav-scrolled', window.pageYOffset > 50); });
 
-        // Mobile menu
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            if (menu.style.transform === 'translateX(0px)' || menu.style.transform === 'translateX(0)') {
-                menu.style.transform = 'translateX(100%)';
-                document.body.style.overflow = '';
-            } else {
-                menu.style.transform = 'translateX(0)';
-                document.body.style.overflow = 'hidden';
-            }
-        }
+        function toggleMobileMenu() { const menu = document.getElementById('mobileMenu'); if (menu.style.transform === 'translateX(0px)' || menu.style.transform === 'translateX(0)') { menu.style.transform = 'translateX(100%)'; document.body.style.overflow = ''; } else { menu.style.transform = 'translateX(0)'; document.body.style.overflow = 'hidden'; } }
 
-        // Touch swipe for galleries
         let touchStartX = {};
-        document.addEventListener('touchstart', function(e) {
-            const gallery = e.target.closest('.gallery-container');
-            if (gallery) {
-                const id = gallery.id.replace('gallery-', '').replace('modal-gallery-', '');
-                touchStartX[id] = e.touches[0].clientX;
-            }
-        });
+        document.addEventListener('touchstart', function(e) { const gallery = e.target.closest('.gallery-container'); if (gallery) { const id = gallery.id.replace('gallery-', '').replace('modal-gallery-', '').replace('towel-gallery-', ''); touchStartX[id] = e.touches[0].clientX; } });
+        document.addEventListener('touchend', function(e) { const gallery = e.target.closest('.gallery-container'); if (gallery && touchStartX) { const id = gallery.id.replace('gallery-', '').replace('modal-gallery-', '').replace('towel-gallery-', ''); const diff = e.changedTouches[0].clientX - (touchStartX[id] || 0); if (Math.abs(diff) > 50) { slideGallery(parseInt(id), diff > 0 ? -1 : 1); } } });
 
-        document.addEventListener('touchend', function(e) {
-            const gallery = e.target.closest('.gallery-container');
-            if (gallery && touchStartX) {
-                const id = gallery.id.replace('gallery-', '').replace('modal-gallery-', '');
-                const diff = e.changedTouches[0].clientX - (touchStartX[id] || 0);
-                if (Math.abs(diff) > 50) {
-                    slideGallery(parseInt(id), diff > 0 ? -1 : 1);
-                }
-            }
-        });
-
-        // Init
         renderProducts();
+        updateTowelDots();
     </script>
 </body>
 </html>
